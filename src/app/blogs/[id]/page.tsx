@@ -4,7 +4,7 @@ import { cookies } from "next/headers"; // To access cookies in server component
 // Fetch blog data by ID with cookie included for authentication/session
 async function getData(id: string) {
     const cookie = await cookies()
-    const res = await fetch(`http://localhost:3000/api/blogs/${id}`, {
+    const res = await fetch(`https://blog-site-kptzouw6v-dhruv-jindals-projects.vercel.app/api/blogs/${id}`, {
         method: "GET",
         credentials: "include",
         headers: {
