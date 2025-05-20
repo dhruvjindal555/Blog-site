@@ -1,10 +1,10 @@
 'use client'
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import {  useState } from "react";
+
 
 export default function HomePage() {
-  const [loggedIn, setLoggedIn] = useState<boolean | null>(null);
+  const [loggedIn] = useState<boolean | null>(null);
 
   // useEffect(() => {
   //   async function checkAuth() {

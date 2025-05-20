@@ -104,8 +104,9 @@ const Modal = ({ editBlog, onClose, blogEditModalRef }: ModalPropsType) => {
                 reset({ title: '', content: '', tags: [] });
             }
             onClose();
-        } catch (err: any) {
-            toast.error(err.message || 'An error occurred.');
+        } catch (err) {
+            const message = err instanceof Error ? err.message : String(err)
+            toast.error(message || 'An error occurred.');
         } finally {
             setIsSending(false);
         }

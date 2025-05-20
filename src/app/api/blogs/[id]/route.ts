@@ -19,7 +19,7 @@ export async function GET(req: NextRequest, { params }: {
                 error: "Blog not found"
             }, { status: 404 })
         }
-        let blog = await Blog.findById(id).populate([
+        const blog = await Blog.findById(id).populate([
             { path: 'user', select: '-password' }
         ])
         if (!blog) {

@@ -1,24 +1,27 @@
 // Importing mongoose object from mongoose package
-const { mongoose } = require("mongoose");
+import mongoose from "mongoose";
 
-let alreadyConnect = false;
+
+type ConnectionObject = {
+    isConnected?: number
+}
+
+const connection: ConnectionObject = {}
+
 
 export default async function dbConnect() {
     try {
         // If already connected, skip reconnecting
-        if (alreadyConnect) {
-            console.log('Already Connected!');
-            return
+        if (connection.isConnected) {
+            console.log("Already Connnected!")
+            return;
         }
 
         // Connect to MongoDB using connection string from environment variable
-        const response = await mongoose.connect(process.env.MONGO_URI)
-        // console.log(response.connections[0].readyState);
-
-        // Update connection status
-        alreadyConnect = response.connections[0].readyState
-
-        console.log('Successfully connected!');
+       const res = await mongoose.connect(process.env.MONGO_URI || '')
+        // console.log(res.connections[0].readyState);        
+        connection.isConnected = res.connections[0].readyState
+        console.log("Successfully connected to database.");        
     } catch (error) {
         console.log(error);
         throw new Error('Error connecting Database')
