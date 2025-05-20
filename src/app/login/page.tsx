@@ -163,7 +163,7 @@ export default function Login() {
                   <div className="mt-8 text-center">
                     <p className="text-gray-600">
                       <span className='mr-1'>
-                        Don't have an account?
+                        Don&apos;t have an account?
                       </span>
                       <Link href="/register" className="text-black font-medium hover:text-red-600">
                         Create one
