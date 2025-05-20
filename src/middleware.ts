@@ -38,10 +38,11 @@ export async function middleware(req: NextRequest) {
         res.headers.set('user-id', payload.user);
 
         return res;
-    } catch (error: any) {
+    } catch (error) {
+        const message = error instanceof Error ? error.message : String(error)
         // If token verification fails, return an unauthorized response with error message
         return NextResponse.json(
-            { error: error.message },
+            { error: message },
             { status: 401 }
         );
     }

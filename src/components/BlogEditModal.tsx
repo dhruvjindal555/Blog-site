@@ -137,10 +137,10 @@ const Modal = ({ editBlog, onClose, blogEditModalRef }: ModalPropsType) => {
     // Setup auto-save timers: save draft every 30s and after 5s inactivity
     const startAutoSaveTimers = () => {
         let inactivityTimer: NodeJS.Timeout;
-        let intervalTimer: NodeJS.Timeout;
+        
 
         // Save draft every 30 seconds regardless of typing
-        intervalTimer = setInterval(() => {
+        const intervalTimer = setInterval(() => {
             console.log('saving because 30 seconds passed');
             saveDraft();
         }, 30000);
